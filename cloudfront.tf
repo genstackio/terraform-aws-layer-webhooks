@@ -37,7 +37,7 @@ resource "aws_cloudfront_distribution" "cdn" {
 
     lambda_function_association {
       event_type   = "origin-request"
-      lambda_arn   = module.lambda.arn
+      lambda_arn   = module.lambda.qualified_arn
       include_body = true
     }
   }
