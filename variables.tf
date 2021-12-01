@@ -12,18 +12,22 @@ variable "dns" {
 variable "dns_zone" {
   type = string
 }
-variable "lambda_code" {
-  type = string
-}
 variable "price_class" {
   type    = string
   default = "PriceClass_100"
 }
+variable "lambda_code" {
+  type = string
+}
+variable "lambda_variables" {
+  type    = map(string)
+  default = {}
+}
 variable "lambda_policy_statements" {
   type = list(object({
-    actions = list(string)
+    actions   = list(string)
     resources = list(string)
-    effect = string
+    effect    = string
   }))
   default = []
 }

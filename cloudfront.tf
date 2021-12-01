@@ -2,6 +2,13 @@ resource "aws_cloudfront_distribution" "cdn" {
   origin {
     domain_name         = "unknown-origin.com"
     origin_id           = "origin"
+    dynamic custom_header {
+      for_each = var.lambda_variables
+      content {
+        name  = "x-lambda-var-${replace(lower(custom_header.key), "_", "-")}"
+        value = custom_header.value
+      }
+    }
     custom_origin_config {
       http_port              = "80"
       https_port             = "443"
