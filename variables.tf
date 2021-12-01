@@ -19,6 +19,10 @@ variable "price_class" {
 variable "lambda_code" {
   type = string
 }
+variable "lambda_handler" {
+  type    = string
+  default = "index.handler"
+}
 variable "lambda_variables" {
   type    = map(string)
   default = {}
