@@ -30,7 +30,7 @@ resource "aws_cloudfront_distribution" "cdn" {
 
     forwarded_values {
       query_string = true
-      headers      = concat(["Origin", "Authorization"], [for k,v in var.lambda_variables: "x-lambda-var-${replace(lower(k), "_", "-")}"])
+      headers      = ["Origin", "Authorization"]
       cookies {
         forward = "all"
       }
