@@ -1,6 +1,6 @@
 module "lambda" {
   source            = "genstackio/lambda/aws"
-  version           = "0.1.12"
+  version           = "0.3.0"
   name              = var.name
   file              = data.archive_file.lambda-code.output_path
   runtime           = "nodejs14.x"
