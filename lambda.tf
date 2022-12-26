@@ -9,7 +9,18 @@ module "lambda" {
   handler           = var.lambda_handler
   publish           = true
   assume_role_identifiers = ["edgelambda.amazonaws.com"]
-  policy_statements = var.lambda_policy_statements
+  policy_statements = concat(var.lambda_policy_statements,[
+     {
+      actions   = ["xray:PutTraceSegments"]
+      resources = ["*"]
+      effect    = "Allow"
+    },
+    {
+      actions   = ["xray:PutTelemetryRecords"]
+      resources = ["*"]
+      effect    = "Allow"
+    }
+  ])
   providers = {
     aws = aws.central
   }
