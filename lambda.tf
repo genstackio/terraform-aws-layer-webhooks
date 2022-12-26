@@ -10,7 +10,7 @@ module "lambda" {
   publish           = true
   tracing_mode      = var.tracing_mode
   assume_role_identifiers = ["edgelambda.amazonaws.com"]
-  policy_statements = concat(var.lambda_policy_statements,[
+  policy_statements = var.tracing_mode == "Active" ? concat(var.lambda_policy_statements,[
      {
       actions   = ["xray:PutTraceSegments"]
       resources = ["*"]
@@ -21,7 +21,7 @@ module "lambda" {
       resources = ["*"]
       effect    = "Allow"
     }
-  ])
+  ]) : var.lambda_policy_statements
   providers = {
     aws = aws.central
   }
