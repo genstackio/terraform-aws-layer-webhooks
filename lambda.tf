@@ -10,6 +10,7 @@ module "lambda" {
   publish           = true
   assume_role_identifiers = ["edgelambda.amazonaws.com"]
   policy_statements = var.lambda_policy_statements
+  tracing_mode = "Active"
   providers = {
     aws = aws.central
   }
