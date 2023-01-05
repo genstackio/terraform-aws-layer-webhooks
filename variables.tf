@@ -29,7 +29,7 @@ variable "lambda_variables" {
 }
 variable "tracing_mode" {
   type    = string
-  default = "Active"
+  default = null
 }
 variable "lambda_policy_statements" {
   type = list(object({
