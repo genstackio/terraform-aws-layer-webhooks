@@ -27,6 +27,10 @@ variable "lambda_variables" {
   type    = map(string)
   default = {}
 }
+variable "tracing_mode" {
+  type    = string
+  default = null
+}
 variable "lambda_policy_statements" {
   type = list(object({
     actions   = list(string)
