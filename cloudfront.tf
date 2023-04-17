@@ -1,6 +1,6 @@
 resource "aws_cloudfront_distribution" "cdn" {
   origin {
-    domain_name         = "unknown-origin.com"
+    domain_name         = var.fake_origin
     origin_id           = "origin"
     dynamic custom_header {
       for_each = var.lambda_variables

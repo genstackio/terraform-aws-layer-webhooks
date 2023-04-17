@@ -39,3 +39,7 @@ variable "lambda_policy_statements" {
   }))
   default = []
 }
+variable "fake_origin" {
+  type = string
+  default = "unknown-origin.com"
+}
